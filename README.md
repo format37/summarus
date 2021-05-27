@@ -1,3 +1,11 @@
+### fork info
+
+jupyter notebook examples:
+```
+summarize_simple_example.ipynb
+telegram_messages_summarize.ipynb
+```
+
 # summarus
 
 [![Build Status](https://travis-ci.org/IlyaGusev/summarus.svg?branch=master)](https://travis-ci.org/IlyaGusev/summarus)
