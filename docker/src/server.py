@@ -1,4 +1,5 @@
 import redis
+import os
 
 # wait for request
 subscriber = redis.StrictRedis(host='localhost', port=int(os.environ['port']))
