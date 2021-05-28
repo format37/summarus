@@ -2,7 +2,7 @@ import redis
 import time
 
 
-def dialog_en_request(question):
+def summarus_request(question):
     subscriber = redis.StrictRedis(host='localhost', port=6379)
     publisher = redis.StrictRedis(host='localhost', port=6379)
     pub = publisher.pubsub()
@@ -21,5 +21,10 @@ def dialog_en_request(question):
         time.sleep(1)
 
 
-print(dialog_en_request('Проверка связи'))
-print('received')
+with open('data/content_a.txt') as file:
+    article_text = file.read()
+article_text = article_text.replace('\n','. ')
+
+print('requested..')
+print(summarus_request(article_text))
+print('received!')
