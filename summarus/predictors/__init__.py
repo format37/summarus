@@ -1,2 +1,0 @@
-from summarus.predictors.summary_sentences_predictor import WordsSummarySentencesPredictor, SubwordsSummarySentencesPredictor
-from summarus.predictors.summary_predictor import WordsSummaryPredictor, SubwordsSummaryPredictor
