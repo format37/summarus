@@ -1,9 +1,3 @@
-## jupyter notebook examples:
-```
-summarize_simple_example.ipynb
-telegram_messages_summarize.ipynb
-```
-## docker
 ## Docker redis client and server
 ```
 # Set your redis ip in client.py  
