@@ -1,7 +1,8 @@
 import redis
 import time
 
-REDIS_IP = '192.168.1.23' # 10.2.5.212
+REDIS_IP = '192.168.1.23'
+#REDIS_IP = '10.2.5.212'
 
 def summarus_request(question):
     subscriber = redis.StrictRedis(host=REDIS_IP)
