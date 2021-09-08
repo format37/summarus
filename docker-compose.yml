@@ -1,17 +1,10 @@
-version: "3"
 
+version: '3.8'
 services:
-
-  redis:
-    image: "redis"
+  summarus_server:
+    #restart: always
+    build: server
     ports:
-      - 6379:6379
-
-  server: 
-    build: server/
-    command: python ./server.py
-    deploy:
-      resources:
-        reservations:
-          devices:
-          - capabilities: [gpu]
+      - 2800:2800
+    environment:
+      - PORT=2800
