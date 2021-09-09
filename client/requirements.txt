@@ -1,0 +1,4 @@
+pymssql
+requests
+pandas
+urllib3

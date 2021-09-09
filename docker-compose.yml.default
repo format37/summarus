@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  server:
+    restart: always
+    deploy:
+      mode: replicated
+      replicas: 0 # 0 - 1
+      resources:
+        limits:
+          cpus: '29'
+          #memory: 50M
+    build: server
+    ports:
+      - 2800:2800
+    environment:
+      - PORT=2800
+  cpu_worker:
+    restart: always
+    deploy:
+      mode: replicated
+      replicas: 1 # 0 - 1
+    volumes:      
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    build: client
+    environment:
+      - WORKERS_COUNT=1
+      - TZ=Europe/Moscow    
+      - MSSQL_SERVER=
+      - MSSQL_LOGIN=
+      - MSSQL_PASSWORD=
+      - TELEGRAM_CHAT=
+      - TELEGRAM_BOT_TOKEN=
+      - SUMMARUS_SERVER_DEFAULT=http://10.2.4.87:2800/summarize
