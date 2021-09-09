@@ -24,7 +24,6 @@ services:
       - /etc/timezone:/etc/timezone:ro
     build: client
     environment:
-      - WORKERS_COUNT=1
       - TZ=Europe/Moscow    
       - MSSQL_SERVER=
       - MSSQL_LOGIN=

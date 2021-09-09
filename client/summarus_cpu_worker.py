@@ -9,9 +9,7 @@ import json
 import urllib
 
 
-print('started')
-
-print('WORKERS_COUNT', os.environ.get('WORKERS_COUNT', ''))
+print(datetime.datetime.now(), 'started')
 
 
 def ms_sql_con():
@@ -128,6 +126,8 @@ def send_to_telegram(message):
 		get_request += '&text=' + urllib.parse.quote_plus(message)
 		session.get(get_request)
 
+
+time.sleep(10*60)
 
 send_to_telegram('started summarization worker '+str(socket.gethostname()))
 
