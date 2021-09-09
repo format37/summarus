@@ -9,7 +9,7 @@ import json
 import urllib
 
 
-print(datetime.datetime.now(), 'started')
+MAX_TEXT_SIZE = 1023
 
 
 def ms_sql_con():
@@ -40,7 +40,17 @@ def summarize(text, phrases_count):
 		'out_top_k':0
 	}
 	request_str = json.dumps(request)
-	r = requests.post(os.environ.get('SUMMARUS_SERVER_DEFAULT', ''), json=request_str)
+	while True:
+		try:
+			r = requests.post(os.environ.get('SUMMARUS_SERVER_DEFAULT', ''), json=request_str)
+			break
+		except Exception as e:
+			err = str(e)
+			message = str(datetime.datetime.now())+' '+str(socket.gethostname())+' unable to connect summarization server: '+err
+			print(message)
+			send_to_telegram(message)
+			time.sleep(60)
+
 	print(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'summarized size: ', len(r.text))
 	return r.text
 
@@ -127,12 +137,9 @@ def send_to_telegram(message):
 		session.get(get_request)
 
 
-time.sleep(10*60)
-
-send_to_telegram('started summarization worker '+str(socket.gethostname()))
+send_to_telegram(str(datetime.datetime.now())+' started summarization worker '+str(socket.gethostname()))
 
 while True:
-
 	query = "SELECT top 100"
 	query += " linkedid, record_date, side, phrases_count, text_length, text, version, source_id, "
 	query += " '' as text_short, 0 as jaccard_sim"
