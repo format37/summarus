@@ -24,11 +24,12 @@ async def call_test(request):
 
 async def call_mark(request):
 
-    request_str = json.loads(str(await request.text()))
-    request = json.loads(request_str)
+    #request_str = json.loads(str(await request.text()))
+    request_str = str(await request.text())
+    #request = json.loads(request_str)
     df = pd.read_csv(
         StringIO(request_str),
-        encoding='utf-8-sig',
+        #encoding='utf-8-sig',
         dtype={'linkedid': 'str', 'record_date': 'str', 'side': 'str', 'city': 'str'}
         )
     answer = 'ok'
