@@ -33,15 +33,17 @@ async def call_mark(request):
         dtype={'linkedid': 'str', 'record_date': 'str', 'side': 'str', 'city': 'str'}
         )
     answer = 'ok'
+    
     for _id, row in df.iterrows():
         query = "update summarization set "+str(row.city)+" = 1 where "
         query += " record_date = '"+str(row.record_date)+"' and"
         query += " linkedid = '"+str(row.linkedid)+"' and"
         query += " side = '"+str(row.side)+"';"
-        print('query:', query)
         conn = ms_sql_con()  
         cursor = conn.cursor()
         cursor.execute(query)
+        
+    print('marked', len(df))
 
     return web.Response(
         text=answer,
