@@ -26,7 +26,11 @@ async def call_mark(request):
 
     request_str = json.loads(str(await request.text()))
     request = json.loads(request_str)
-    df = pd.read_csv(StringIO(request_str), dtype={'linkedid': 'str', 'record_date': 'str', 'side': 'str', 'city': 'str'})
+    df = pd.read_csv(
+        StringIO(request_str),
+        encoding='utf-8-sig',
+        dtype={'linkedid': 'str', 'record_date': 'str', 'side': 'str', 'city': 'str'}
+        )
     answer = 'ok'
     for _id, row in df.iterrows():
         query = "update summarization set "+str(row.city)+" = 1 where "
