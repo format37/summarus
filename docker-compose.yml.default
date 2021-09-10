@@ -5,7 +5,6 @@ services:
     deploy:
       mode: replicated
       replicas: 1 # 0 - 1
-      deploy:
       resources:
         reservations:
           devices:
