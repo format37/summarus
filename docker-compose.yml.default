@@ -36,3 +36,20 @@ services:
       - TELEGRAM_CHAT=
       - TELEGRAM_BOT_TOKEN=
       - SUMMARUS_SERVER_DEFAULT=http://10.2.4.87:2800/summarize
+  marker:
+    #restart: always
+    deploy:
+      mode: replicated
+      replicas: 0 # 0 - 1
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    build: marker
+    ports:
+      - 8086:8086      
+    environment:
+      - PORT=8086
+      - TZ=Europe/Moscow
+      - MSSQL_SERVER=
+      - MSSQL_LOGIN=
+      - MSSQL_PASSWORD=
