@@ -27,7 +27,7 @@ async def call_mark(request):
 
     #request_str = json.loads(str(await request.text()))
     request_str = str(await request.text())
-    with open('request.txt',w) as f:
+    with open('request_str.txt', 'w') as f:
         f.write(request_str)
     #request = json.loads(request_str)
     df = pd.read_csv(
