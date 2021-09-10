@@ -140,7 +140,7 @@ def send_to_telegram(message):
 send_to_telegram(str(datetime.datetime.now())+' started summarization worker '+str(socket.gethostname()))
 
 while True:
-	query = "SELECT top 100"
+	query = "SELECT top 1000"
 	query += " linkedid, record_date, side, phrases_count, text_length, text, version, source_id, "
 	query += " '' as text_short, 0 as jaccard_sim"
 	query += " from summarization_queue"
