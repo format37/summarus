@@ -5,10 +5,16 @@ services:
     deploy:
       mode: replicated
       replicas: 1 # 0 - 1
+      deploy:
       resources:
-        limits:
-          cpus: '29'
-          #memory: 50M
+        reservations:
+          devices:
+          - driver: nvidia
+            device_ids: ['0']
+            capabilities: [gpu]
+      #  limits:
+      #    cpus: '29'
+      #    #memory: 50M
     build: server
     ports:
       - 2800:2800
