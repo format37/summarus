@@ -36,7 +36,7 @@ def summarize(text, phrases_count):
 		'in_text':text,
 		'in_max_length':600,
 		'out_no_repeat_ngram_size':3,
-		'out_num_beams':5,
+		'out_num_beams':8,
 		'out_top_k':0
 	}
 	request_str = json.dumps(request)
