@@ -2,3 +2,4 @@ pymssql
 requests
 pandas
 urllib3
+SQLAlchemy
