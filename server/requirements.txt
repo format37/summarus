@@ -6,4 +6,5 @@ beautifulsoup4 >= 4.9.0
 sentencepiece >= 0.1.85
 overrides == 3.0.0 
 rouge == 0.3.2
+SQLAlchemy
 git+https://github.com/huggingface/transformers.git
