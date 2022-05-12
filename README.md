@@ -7,4 +7,4 @@ cd summarus/
 sh compose.sh
 ```
 ### Using
-Request example: [client/request.ipynb](http://127.0.0.1:8888/notebooks/work/summarus/client/request.ipynb)
+Request example: [client/request.ipynb](https://github.com/format37/summarus/blob/master/client/request.ipynb)
