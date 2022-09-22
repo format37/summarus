@@ -22,7 +22,7 @@ def ms_sql_con():
         database='voice_ai',
         #autocommit=True			
     )
-    logging.info('Connected to MSSQL')
+    # logging.info('Connected to MSSQL')
     return con
 
 async def call_test(request):
