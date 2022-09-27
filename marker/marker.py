@@ -20,7 +20,7 @@ def ms_sql_con():
         user=os.environ.get('MSSQL_LOGIN', ''),
         password=os.environ.get('MSSQL_PASSWORD', ''),
         database='voice_ai',
-        #autocommit=True			
+        autocommit=True			
     )
     # logging.info('Connected to MSSQL')
     return con
