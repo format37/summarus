@@ -1,1 +1,2 @@
-sudo docker-compose up --build -d
+# with restart
+sudo docker-compose up --build -d --force-recreate
