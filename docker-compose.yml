@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  server:
+    restart: always
+    deploy:
+      mode: replicated
+      replicas: 1 # 0 - 1
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            device_ids: ['0']
+            capabilities: [gpu]
+      #  limits:
+      #    cpus: '29'
+      #    #memory: 50M
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    build: server
+    volumes:      
+      - ./cache:/root/.cache
+    ports:
+      - 2800:2800
+    # network_mode: "host"
+    environment:
+      - PORT=2800
